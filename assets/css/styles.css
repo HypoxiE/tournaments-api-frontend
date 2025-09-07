@@ -1,0 +1,23 @@
+#leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* расстояние между блоками */
+}
+
+.user-block {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.username {
+	font-weight: bold;
+}
