@@ -26,6 +26,12 @@ async function drawTable(tournament) {
         }
       });
 
+      let formula_content = tournament.formula
+      result.metrics.forEach(data => {
+        formula_content = formula_content.replace(new RegExp(data.key, "g"), data.value);
+      });
+      formula_content = formula_content + " = " + result.score + " очков"
+
       const block = document.createElement("div");
       block.className = "result-block";
 
@@ -51,10 +57,20 @@ async function drawTable(tournament) {
       const comment = document.createElement("div");
       comment.className = "result-comment-block";
       comment.innerHTML = comment_content;
+      comment.title = comment_content;
+
+      const formula = document.createElement("div");
+      formula.className = "result-formula-block";
+      formula.innerHTML = formula_content;
+
+      comment_formula_block = document.createElement("div");
+      comment_formula_block.className = "result-comment-formula-block";
+      comment_formula_block.appendChild(comment);
+      comment_formula_block.appendChild(formula);
 
       block.appendChild(avatar);
       block.appendChild(info);
-      block.appendChild(comment);
+      block.appendChild(comment_formula_block);
       container.appendChild(block);
     });
 
