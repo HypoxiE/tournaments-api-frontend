@@ -1,5 +1,4 @@
 async function getResults() {
-  // Запрос (замени URL на свой)
   const response = await fetch("http://localhost:8080/leaderboard?tournament_id=3");
   if (!response.ok) throw new Error(`HTTP ошибка: ${response.status}`);
   return await response.json()
@@ -50,9 +49,16 @@ async function drawTable(tournament) {
       // Генерация содержимого блока
       info.innerHTML = `
         <span class="username">${result.username}</span>
-        <span class="score">Score: ${result.score}</span>
-        <span class="cost">Cost: ${result.cost}</span>
+        <span class="score">Очки: ${result.score}</span>
+        <span class="cost">Стоимость: ${result.cost}</span>
       `;
+
+      const formula_annotation = document.createElement("div");
+      formula_annotation.className = "result-formula-extra-info-block";
+      formula_annotation.innerHTML = "qwer";
+      formula_annotation.addEventListener("click", () => {
+        formula_annotation.classList.toggle("active");
+      });
 
       const comment = document.createElement("div");
       comment.className = "result-comment-block";
@@ -62,8 +68,11 @@ async function drawTable(tournament) {
       const formula = document.createElement("div");
       formula.className = "result-formula-block";
       formula.innerHTML = formula_content;
+      formula.addEventListener("click", () => {
+        formula_annotation.classList.toggle("active");
+      });
 
-      comment_formula_block = document.createElement("div");
+      const comment_formula_block = document.createElement("div");
       comment_formula_block.className = "result-comment-formula-block";
       comment_formula_block.appendChild(comment);
       comment_formula_block.appendChild(formula);
@@ -71,6 +80,7 @@ async function drawTable(tournament) {
       block.appendChild(avatar);
       block.appendChild(info);
       block.appendChild(comment_formula_block);
+      block.appendChild(formula_annotation)
       container.appendChild(block);
     });
 
@@ -99,4 +109,4 @@ async function main() {
   await drawTable(tournament);
 }
 
-main();
+main()
