@@ -4,7 +4,11 @@
   gap: 10px; /* расстояние между блоками */
 }
 
-.user-block {
+.result-block {
+  display: flex;
+  align-items: center; /* выравнивание по вертикали */
+  gap: 10px; /* отступ между аватаркой и текстом */
+  margin: 10px 0;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -12,12 +16,24 @@
 }
 
 .avatar {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
+  width: 15vw;
+  height: 15vw;
+  max-width: 100px;
+  max-height: 100px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .username {
 	font-weight: bold;
+  font-size: larger;
+}
+
+.result-info-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-comment-block {
+  flex-direction: row;
 }
