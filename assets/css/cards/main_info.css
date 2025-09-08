@@ -1,0 +1,30 @@
+.avatar {
+  width: 15vw;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 3px solid black;
+  object-fit: cover;
+
+  /*Для поддержки старыми браузерами*/
+  height: 15vw;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+/*Начало. Блок с главной информацией*/
+.result-info-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+.username {
+	font-weight: bold;
+  font-size: larger;
+}
+/*.score {
+  
+}
+.cost {
+
+}*/
+/*Конец. Блок с главной информацией*/

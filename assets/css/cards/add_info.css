@@ -1,53 +1,4 @@
-#leaderboard {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* расстояние между блоками */
-}
-
-/*Начало. Блок с результатами прохождений*/
-.result-block {
-  display: flex;
-  position: relative;
-  align-items: center;
-  gap: 10px; /* отступ между аватаркой и текстом */
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
-
-.avatar {
-  width: 15vw;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  border: 3px solid black;
-  object-fit: cover;
-
-  /*Для поддержки старыми браузерами*/
-  height: 15vw;
-  max-width: 100px;
-  max-height: 100px;
-}
-
-/*Начало. Блок с главной информацией*/
-.result-info-block {
-  display: flex;
-  flex-direction: column;
-  min-width: 100px;
-}
-.username {
-	font-weight: bold;
-  font-size: larger;
-}
-.score {
-  
-}
-.cost {
-
-}
-/*Конец. Блок с главной информацией*/
-
+/*Начало. Блок с дополнительной информацией*/
 .result-comment-formula-block {
   display: flex;
   flex-direction: column;
@@ -56,7 +7,6 @@
   font-size: 14px;
   color: #333;
 }
-
 .result-comment-block {
   flex: 1;
   padding: 0px 12px;
@@ -81,7 +31,6 @@
 .result-comment-block:hover {
   background-color: #e0e0e0;
 }
-
 .result-formula-block{
   flex: 1;
   padding: 0px 12px;
@@ -107,11 +56,6 @@
 .result-formula-block:hover {
   background-color: #e0e0e0;
 }
-
-.error-block {
-  color: red;
-}
-
 .result-formula-extra-info-block {
   white-space: nowrap;
   overflow-x: auto;
@@ -130,13 +74,9 @@
   transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
   border-radius: 5px;
 }
-
 .result-formula-extra-info-block.active {
   max-height: 1000px;
   opacity: 1;
   padding: 15px;
 }
-
-
-
-/*Конец. Блок с результатами прохождений*/
+/*Конец. Блок с дополнительной информацией*/

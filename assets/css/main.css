@@ -1,0 +1,24 @@
+@import url("cards/main_info.css");
+@import url("cards/add_info.css");
+
+#leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* расстояние между блоками */
+}
+
+.result-block {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 10px; /* отступ между аватаркой и текстом */
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.error-block {
+  color: red;
+}
