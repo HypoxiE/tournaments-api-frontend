@@ -25,11 +25,26 @@ async function drawTable(tournament) {
         }
       });
 
-      let formula_content = tournament.formula
+      let formula_content = tournament.formula.replace(new RegExp("\\*", "g"), "×");
+      let formula_annotation_content = "<b>Подробности рассчёта</b>";
+      let formula_annotation_content_formula = tournament.formula.replace(new RegExp("\\*", "g"), "×");
+      const local_formula_annotation = new Map();
+      local_formula_annotation.set("humans", "людей");
+      local_formula_annotation.set("animals", "животных");
+
       result.metrics.forEach(data => {
         formula_content = formula_content.replace(new RegExp(data.key, "g"), data.value);
+
+        if (local_formula_annotation.get(data.key) != undefined){
+          formula_annotation_content = formula_annotation_content + `${data.value} ${local_formula_annotation.get(data.key)}<br>`;
+          formula_annotation_content_formula = formula_annotation_content_formula.replace(new RegExp(data.key, "g"), "(" + data.value + " " + local_formula_annotation.get(data.key) + ")");
+        } else {
+          formula_annotation_content = formula_annotation_content + `${data.value} ${data.key}<br>`;
+          formula_annotation_content_formula = formula_annotation_content_formula.replace(new RegExp(data.key, "g"), "(" + data.value + " " + data.key + ")");
+        }
       });
-      formula_content = formula_content + " = " + result.score + " очков"
+      formula_annotation_content = formula_annotation_content + "<b>" + formula_annotation_content_formula + " = " + result.score + " очков" + "</b>";
+      formula_content = formula_content + " = " + result.score + " очков";
 
       const block = document.createElement("div");
       block.className = "result-block";
@@ -55,7 +70,7 @@ async function drawTable(tournament) {
 
       const formula_annotation = document.createElement("div");
       formula_annotation.className = "result-formula-extra-info-block";
-      formula_annotation.innerHTML = "qwer";
+      formula_annotation.innerHTML = formula_annotation_content;
       formula_annotation.addEventListener("click", () => {
         formula_annotation.classList.toggle("active");
       });
