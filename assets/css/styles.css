@@ -37,3 +37,7 @@
 .user-comment-block {
   flex-direction: row;
 }
+
+.error-block {
+  color: red;
+}

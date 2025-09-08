@@ -12,7 +12,7 @@ async function drawTable(tournament) {
     nameDiv.innerHTML = `${tournament.name}`;
 
     const container = document.getElementById("leaderboard");
-    container.innerHTML = ""; // очищаем перед рендером
+    container.innerHTML = "";
 
     tournament.results.forEach(result => {
 
@@ -66,7 +66,20 @@ async function drawTable(tournament) {
 }
 
 async function main() {
-  const tournament = await getResults();
+  let tournament;
+  try {
+    tournament = await getResults();
+  } catch (err) {
+    const container = document.getElementById("leaderboard");
+    container.innerHTML = "";
+
+    const error = document.createElement("div");
+    error.className = "error-block";
+    error.innerHTML = "Ошибка: Не удалось связаться с сервером. Попробуйте позже.";
+
+    container.appendChild(error);
+    return
+  }
   await drawTable(tournament);
 }
 
