@@ -153,7 +153,22 @@ async function main() {
     }
   }
   console.log(tournament)
-  //tournament = await cutResults(tournament);
+
+  let settings = JSON.parse(localStorage.getItem("settings")) || {};
+  const checkboxes = document.querySelectorAll(".setting");
+  checkboxes.forEach(cb => {
+    const key = cb.dataset.key;
+    cb.checked = settings[key] || false;
+
+    cb.addEventListener("change", () => {
+      settings[key] = cb.checked;
+      localStorage.setItem("settings", JSON.stringify(settings));
+    });
+  });
+
+  if (!settings['showRepeats']) {
+    tournament = await cutResults(tournament);
+  } 
   await drawTable(tournament);
 }
 
@@ -166,14 +181,7 @@ btn.addEventListener("click", () => {
   panel.classList.toggle("open");
 });
 
-let settings = JSON.parse(localStorage.getItem("settings")) || {};
-const checkboxes = document.querySelectorAll(".setting");
-checkboxes.forEach(cb => {
-  const key = cb.dataset.key;
-  cb.checked = settings[key] || false;
-
-  cb.addEventListener("change", () => {
-    settings[key] = cb.checked;
-    localStorage.setItem("settings", JSON.stringify(settings));
-  });
+const showRepeatsCheckbox = document.getElementById("showRepeatsCheckbox");
+showRepeatsCheckbox.addEventListener("change", () => {
+  main()
 });
