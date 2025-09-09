@@ -1,10 +1,14 @@
+let cache_tournament;
+
 async function getResults() {
   const response = await fetch("http://localhost:8080/leaderboard?tournament_id=3");
-  if (!response.ok) throw new Error(`HTTP ошибка: ${response.status}`);
+  if (!response.ok){
+    throw new Error(`HTTP ошибка: ${response.status}`)
+  };
   return await response.json()
 }
 
-async function drawTable(tournament) {
+async function drawFullTable(tournament) {
   try {
 
     const nameDiv = document.getElementById("tournament_name");
@@ -110,18 +114,32 @@ async function main() {
   let tournament;
   try {
     tournament = await getResults();
+    cache_tournament = tournament
   } catch (err) {
-    const container = document.getElementById("leaderboard");
-    container.innerHTML = "";
+    console.log(err.message);
+    if (err.message == "Failed to fetch") {
+      const container = document.getElementById("leaderboard");
+      container.innerHTML = "";
 
-    const error = document.createElement("div");
-    error.className = "error-block";
-    error.innerHTML = "Ошибка: Не удалось связаться с сервером. Попробуйте позже.";
+      const error = document.createElement("div");
+      error.className = "error-block";
+      error.innerHTML = "Ошибка: Не удалось связаться с сервером. Попробуйте позже.";
 
-    container.appendChild(error);
-    return
+      container.appendChild(error);
+      return
+    } else {
+      const container = document.getElementById("leaderboard");
+      container.innerHTML = "";
+
+      const error = document.createElement("div");
+      error.className = "error-block";
+      error.innerHTML = `Ошибка: ${err.message}`;
+
+      container.appendChild(error);
+      return
+    }
   }
-  await drawTable(tournament);
+  await drawFullTable(tournament);
 }
 
 main()
