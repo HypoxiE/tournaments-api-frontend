@@ -34,7 +34,7 @@
   cursor: help;
 }
 .result-comment-block:hover, .result-formula-block:hover {
-  background-color: #1f1f1f;
+  background-color: var(--main_bg);
 }
 .result-formula-extra-info-block {
   white-space: nowrap;

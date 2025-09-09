@@ -185,3 +185,22 @@ const showRepeatsCheckbox = document.getElementById("showRepeatsCheckbox");
 showRepeatsCheckbox.addEventListener("change", () => {
   main()
 });
+
+const themeSwitch = document.getElementById("themeSwitchCheckbox");
+
+// Загружаем сохранённую тему
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light");
+  themeSwitch.checked = true;
+}
+
+// Переключение темы
+themeSwitch.addEventListener("change", () => {
+  if (!themeSwitch.checked) {
+    document.body.classList.add("light");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.body.classList.remove("light");
+    localStorage.setItem("theme", "dark");
+  }
+});
