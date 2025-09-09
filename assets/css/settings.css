@@ -1,0 +1,73 @@
+/* Шапка */
+
+/* Кнопка */
+.settings-btn {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.settings-btn:hover {
+  transform: rotate(20deg);
+}
+
+/* Боковая панель */
+.settings-panel {
+  position: fixed;
+  top: 0;
+  right: -1000px;
+  width: 260px;
+  height: 100%;
+  background: var(--header_bg);
+  box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 99;
+}
+.settings-panel.open {
+  right: 0;
+}
+
+.settings-panel h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+
+/*Чекбокс*/
+.checkbox input {
+  display: none;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--text);
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+/* Отрисовка галочки */
+.checkbox input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--text);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}

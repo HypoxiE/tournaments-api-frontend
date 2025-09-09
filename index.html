@@ -15,12 +15,20 @@
   <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 <body>
+
   <header>
+    <button class="settings-btn" id="settingsBtn">⚙</button>
     <section>
       <h1>Таблица лидеров турнира <span id="tournament_name"></span></h1>
       <p>Краткое описание турнира</p>
     </section>
   </header>
+
+  <aside class="settings-panel" id="settingsPanel">
+    <h2>Настройки</h2>
+    <label class="checkbox" ><input type="checkbox" class="setting" data-key="darkMode" checked><span class="checkmark"></span> Тёмная тема</label><br>
+    <label class="checkbox"><input type="checkbox" class="setting" data-key="showRepeats" checked><span class="checkmark"></span> Показывать повторные прохождения</label>
+  </aside>
 
   <main>
     <div id="leaderboard"></div>

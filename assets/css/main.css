@@ -1,18 +1,21 @@
 @import url("cards/main_info.css");
 @import url("cards/add_info.css");
+@import url("settings.css");
 @import url("colors.css");
 
-header {
-	background-color: #202152;
-	color: white;
-	padding: 15px;
-	text-align: center;
-}
 body {
   background-color: var(--bg);
   color: var(--text);
 }
+header {
+  position: relative;
+	background-color: var(--header_bg);
+  background: var(--header_bg);
+	padding: 15px;
+	text-align: center;
+}
 main {
+  margin-top: -200px;
 	max-width: 800px;
 	margin: 20px auto;
 	padding: 20px;

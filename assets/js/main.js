@@ -118,8 +118,6 @@ async function drawTable(tournament) {
       container.appendChild(block);
     });
 
-    console.log(tournament)
-
   } catch (err) {
     console.error("Ошибка:", err);
   }
@@ -154,8 +152,28 @@ async function main() {
       return
     }
   }
-  tournament = await cutResults(tournament);
+  console.log(tournament)
+  //tournament = await cutResults(tournament);
   await drawTable(tournament);
 }
 
 main()
+
+const btn = document.getElementById("settingsBtn");
+const panel = document.getElementById("settingsPanel");
+
+btn.addEventListener("click", () => {
+  panel.classList.toggle("open");
+});
+
+let settings = JSON.parse(localStorage.getItem("settings")) || {};
+const checkboxes = document.querySelectorAll(".setting");
+checkboxes.forEach(cb => {
+  const key = cb.dataset.key;
+  cb.checked = settings[key] || false;
+
+  cb.addEventListener("change", () => {
+    settings[key] = cb.checked;
+    localStorage.setItem("settings", JSON.stringify(settings));
+  });
+});

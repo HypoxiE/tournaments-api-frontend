@@ -1,10 +1,10 @@
 :root {
   --bg: #131313;
   --main_bg: #2e2e2e;
+  --header_bg: linear-gradient(135deg, #2e2e2e, #1a1a1a);
   --results_bg: #414141;
   --extra_formula_bg: #1b1b1bf7;
 
   --text: #cccccc;
   --borders: #2e2e2e;
-
 }
