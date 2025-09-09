@@ -1,4 +1,3 @@
-let cache_tournament;
 
 async function getResults() {
   const response = await fetch("http://localhost:8080/leaderboard?tournament_id=3");
@@ -8,7 +7,23 @@ async function getResults() {
   return await response.json()
 }
 
-async function drawFullTable(tournament) {
+async function cutResults(tournament) {
+  let results = [];
+  let used_names = [];
+
+  tournament.results.forEach(result => {
+    if (!used_names.includes(result.username)) {
+      results.push(result);
+      used_names.push(result.username)
+    }
+  });
+
+  tournament.results = results
+
+  return tournament;
+}
+
+async function drawTable(tournament) {
   try {
 
     const nameDiv = document.getElementById("tournament_name");
@@ -139,7 +154,8 @@ async function main() {
       return
     }
   }
-  await drawFullTable(tournament);
+  tournament = await cutResults(tournament);
+  await drawTable(tournament);
 }
 
 main()

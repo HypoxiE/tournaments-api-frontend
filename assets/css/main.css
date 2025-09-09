@@ -1,9 +1,24 @@
 @import url("cards/main_info.css");
 @import url("cards/add_info.css");
+@import url("colors.css");
 
+header {
+	background-color: #202152;
+	color: white;
+	padding: 15px;
+	text-align: center;
+}
 body {
-  background-color: #131313;
-  color: #cccccc;
+  background-color: var(--bg);
+  color: var(--text);
+}
+main {
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	background: var(--main_bg);
+	border-radius: 8px;
+	box-shadow: 0 2px 8px #00000000;
 }
 
 #leaderboard {
@@ -19,9 +34,9 @@ body {
   gap: 10px; /* отступ между аватаркой и текстом */
   margin: 10px 0;
   padding: 10px;
-  border: 1px solid #2e2e2e;
+  border: 1px solid var(--borders);
   border-radius: 5px;
-  background-color: #414141;
+  background-color: var(--results_bg);
 }
 
 .error-block {

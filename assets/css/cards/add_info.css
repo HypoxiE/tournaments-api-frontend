@@ -9,9 +9,9 @@
 .result-comment-block, .result-formula-block{
   flex: 1;
   padding: 0px 12px;
-  border: 1px solid #2e2e2e;
+  border: 1px solid var(--borders);
   border-radius: 12px;
-  background-color: #414141;
+  background-color: var(--results_bg);
   line-height: 2em;
 
   display: -webkit-box;
@@ -42,7 +42,7 @@
   display: flex;
   position: absolute;
   inset: 0; /* top:0; right:0; bottom:0; left:0; */
-  background-color: rgba(27, 27, 27, 0.97);
+  background-color: var(--extra_formula_bg);
   padding: 0px;
   flex-direction: column;
   justify-content: flex-start;
