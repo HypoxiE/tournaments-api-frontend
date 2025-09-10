@@ -28,6 +28,9 @@ async function main() {
 		readyTournamentData = await cutResults(readyTournamentData);
 	}
 	await drawTable(readyTournamentData);
+	if (length(tournament.results) == 0) {
+		newError("Пока результатов нет.");
+	}
 }
 
 main()
