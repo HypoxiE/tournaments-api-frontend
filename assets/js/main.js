@@ -23,14 +23,16 @@ async function main() {
 
 	console.log(tournament)
 
+	if (tournament.results.length == 0) {
+		newError("Пока результатов нет.");
+		return
+	}
+
 	let readyTournamentData = tournament;
 	if (!JSON.parse(localStorage.getItem("settings"))['showRepeats']) {
 		readyTournamentData = await cutResults(readyTournamentData);
 	}
 	await drawTable(readyTournamentData);
-	if (length(tournament.results) == 0) {
-		newError("Пока результатов нет.");
-	}
 }
 
 main()
