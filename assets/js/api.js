@@ -31,7 +31,7 @@ export async function getResults() {
 	const cached = getCachedDataSession(cacheKey);
 	if (cached) return cached;
 
-	const response = await fetch("http://localhost:8080/leaderboard?tournament_id=3");
+	const response = await fetch("http://localhost:8080/leaderboard?tournament_id=1");
 	if (!response.ok){
 		throw new Error(`HTTP ошибка: ${response.status}`)
 	};
